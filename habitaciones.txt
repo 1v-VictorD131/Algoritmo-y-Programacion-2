@@ -1,0 +1,3 @@
+101,Sencilla,Disponible
+102,Doble,Disponible
+103,Suite,Disponible
