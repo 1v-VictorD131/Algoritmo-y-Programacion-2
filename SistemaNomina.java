@@ -2,21 +2,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Excepción para horas inválidas
 class HorasInvalidasException extends Exception {
     public HorasInvalidasException(String mensaje) {
         super(mensaje);
     }
 }
 
-// Excepción para salario inválido
 class SalarioInvalido extends Exception {
     public SalarioInvalido(String mensaje) {
         super(mensaje);
     }
 }
 
-// Clase abstracta Empleado
 abstract class Empleado {
     private String nombre;
     private double salario;
@@ -66,7 +63,6 @@ abstract class Empleado {
     }
 }
 
-// Clase EmpleadoFijo
 class EmpleadoFijo extends Empleado {
     public EmpleadoFijo(String nombre, double salario) throws SalarioInvalido {
         super(nombre, salario);
@@ -83,7 +79,6 @@ class EmpleadoFijo extends Empleado {
     }
 }
 
-// Clase EmpleadoTemporal
 class EmpleadoTemporal extends Empleado {
     private double pagoPorHora;
 
@@ -106,7 +101,6 @@ class EmpleadoTemporal extends Empleado {
     }
 }
 
-// Clase SistemaNomina
 public class SistemaNomina {
     public static void main(String[] args) {
         ArrayList<Empleado> empleados = leerEmpleadosDesdeArchivo();
@@ -122,7 +116,7 @@ public class SistemaNomina {
             System.out.println("5. Salir");
             System.out.print("Seleccione una opción: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); // Consumir la nueva línea
+            scanner.nextLine(); 
 
             switch (opcion) {
                 case 1:
@@ -155,11 +149,11 @@ public class SistemaNomina {
             String nombreFijo = scanner.nextLine();
             System.out.print("Salario fijo: ");
             double salarioFijo = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea
+            scanner.nextLine(); 
             EmpleadoFijo empleadoFijo = new EmpleadoFijo(nombreFijo, salarioFijo);
             empleados.add(empleadoFijo);
             System.out.println("Empleado fijo registrado con éxito.");
-            guardarEmpleadosEnArchivo(empleados); // Guardado automático
+            guardarEmpleadosEnArchivo(empleados); 
         } catch (SalarioInvalido e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -171,11 +165,11 @@ public class SistemaNomina {
             String nombreTemporal = scanner.nextLine();
             System.out.print("Pago por hora: ");
             double pagoPorHora = scanner.nextDouble();
-            scanner.nextLine(); // Consumir la nueva línea
+            scanner.nextLine(); 
             EmpleadoTemporal empleadoTemporal = new EmpleadoTemporal(nombreTemporal, pagoPorHora);
             empleados.add(empleadoTemporal);
             System.out.println("Empleado temporal registrado con éxito.");
-            guardarEmpleadosEnArchivo(empleados); // Guardado automático
+            guardarEmpleadosEnArchivo(empleados); 
         } catch (SalarioInvalido e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -189,10 +183,10 @@ public class SistemaNomina {
             try {
                 System.out.print("Horas trabajadas: ");
                 int horas = scanner.nextInt();
-                scanner.nextLine(); // Consumir la nueva línea
+                scanner.nextLine(); 
                 empleado.registrarHoras(horas);
                 System.out.println("Horas registradas con éxito.");
-                guardarEmpleadosEnArchivo(empleados); // Guardado automático después de actualizar las horas
+                guardarEmpleadosEnArchivo(empleados); 
             } catch (HorasInvalidasException e) {
                 System.out.println("Error: " + e.getMessage());
             }
