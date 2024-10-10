@@ -4,11 +4,13 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 class HorasInvalidasException extends Exception {
     public HorasInvalidasException(String mensaje) {
         super(mensaje);
     }
 }
+
 
 class SalarioInvalido extends Exception {
     public SalarioInvalido(String mensaje) {
@@ -65,6 +67,7 @@ abstract class Empleado {
     }
 }
 
+
 class EmpleadoFijo extends Empleado {
     public EmpleadoFijo(String nombre, double salario) throws SalarioInvalido {
         super(nombre, salario);
@@ -80,6 +83,7 @@ class EmpleadoFijo extends Empleado {
         return "EmpleadoFijo";
     }
 }
+
 
 class EmpleadoTemporal extends Empleado {
     private double pagoPorHora;
@@ -102,6 +106,7 @@ class EmpleadoTemporal extends Empleado {
         return "EmpleadoTemporal";
     }
 }
+
 
 public class SistemaNomina {
     public static void main(String[] args) {
@@ -145,6 +150,7 @@ public class SistemaNomina {
         scanner.close();
     }
 
+ 
     private static void registrarEmpleadoFijo(ArrayList<Empleado> empleados, Scanner scanner) {
         try {
             System.out.print("Nombre del empleado fijo: ");
@@ -161,6 +167,7 @@ public class SistemaNomina {
         }
     }
 
+    
     private static void registrarEmpleadoTemporal(ArrayList<Empleado> empleados, Scanner scanner) {
         try {
             System.out.print("Nombre del empleado temporal: ");
@@ -177,6 +184,7 @@ public class SistemaNomina {
         }
     }
 
+    
     private static void ingresarHorasTrabajadas(ArrayList<Empleado> empleados, Scanner scanner) {
         System.out.print("Ingrese el nombre del empleado: ");
         String nombre = scanner.nextLine();
@@ -197,6 +205,7 @@ public class SistemaNomina {
         }
     }
 
+    
     private static void generarReciboNomina(ArrayList<Empleado> empleados) {
         System.out.println("----- Recibo de Nómina -----");
         for (Empleado emp : empleados) {
@@ -205,6 +214,7 @@ public class SistemaNomina {
         }
     }
 
+ 
     private static Empleado buscarEmpleado(ArrayList<Empleado> empleados, String nombre) {
         for (Empleado emp : empleados) {
             if (emp.getNombre().equalsIgnoreCase(nombre)) {
@@ -214,6 +224,7 @@ public class SistemaNomina {
         return null;
     }
 
+   
     private static void guardarEmpleadosEnArchivo(ArrayList<Empleado> empleados) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("empleados.txt"))) {
             for (Empleado empleado : empleados) {
@@ -226,6 +237,7 @@ public class SistemaNomina {
         }
     }
 
+ 
     private static ArrayList<Empleado> leerEmpleadosDesdeArchivo() {
         ArrayList<Empleado> empleados = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("empleados.txt"))) {
@@ -252,4 +264,3 @@ public class SistemaNomina {
         return empleados;
     }
 }
-
