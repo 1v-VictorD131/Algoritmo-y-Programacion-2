@@ -1,3 +1,5 @@
+//Sistema Nomina Victor Diaz y Santiago Sandoval
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
